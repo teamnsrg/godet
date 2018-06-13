@@ -257,7 +257,7 @@ func (remote *RemoteDebugger) connectWs(tab *Tab) error {
 		}
 
 		if tab == nil {
-			tab = tabs[0]
+			tab = tabs[len(tabs)-1]
 		} else {
 			for _, t := range tabs {
 				if tab.ID == t.ID {
