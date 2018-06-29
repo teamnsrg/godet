@@ -1328,6 +1328,15 @@ func (remote *RemoteDebugger) SetUserAgent(userAgent string) error {
 	return err
 }
 
+// Set the behavior when downloading a file. EXPERIMENTAL
+func (remote *RemoteDebugger) SetDownloadBehavior(behavior string, downloadPath string) error {
+	_, err := remote.SendRequest("Page.setDownloadBehavior", Params{
+		"behavior":     behavior,
+		"downloadPath": downloadPath,
+	})
+	return err
+}
+
 func (remote *RemoteDebugger) GetCertificate(origin string) ([]string, error) {
 	resp, err := remote.SendRequest("Network.getCertificate", Params{
 		"origin": origin,
